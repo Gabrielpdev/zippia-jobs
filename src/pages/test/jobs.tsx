@@ -11,7 +11,11 @@ type IJob = {
   jobDescription: string;
 };
 
-export default ({ data }) => {
+type IComponentProps = {
+  data: IJob[];
+};
+
+export default ({ data }: IComponentProps) => {
   console.log(data);
 
   const [jobs, setJobs] = useState<IJob[]>([]);
@@ -34,7 +38,7 @@ export default ({ data }) => {
 
   // filter the 10 firsts jobs
   function listFirst10Jobs() {
-    const jobsFiltered = data?.filter((_, index) => index < 10);
+    const jobsFiltered = data?.filter((_: IJob, index: number) => index < 10);
 
     // update the state
     setJobs(jobsFiltered);
@@ -43,8 +47,6 @@ export default ({ data }) => {
   useEffect(() => {
     listFirst10Jobs();
   }, []);
-
-  console.log({ jobs });
 
   return (
     <>

@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "https://www.zippia.com/api/jobs/",
+  baseURL: process.env.API_URL,
 });
